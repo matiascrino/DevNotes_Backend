@@ -1,12 +1,11 @@
-package com.example.backend_java.jwt;
+package com.example.backend_java.auth.jwt;
 
 
 
-import com.example.backend_java.security.SecurityConstants;
+import com.example.backend_java.auth.security.SecurityConstants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +43,7 @@ public class JwtService {
     }
 
     private Key getKey() {
-            return Keys.hmacShaKeyFor(SecurityConstants.TOKEN_SECRET.getBytes());
+            return Keys.hmacShaKeyFor(SecurityConstants.getTokenSecret().getBytes());
     }
 
     public String getUsernameFromToken(String token) {

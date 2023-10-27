@@ -1,10 +1,12 @@
-package com.example.backend_java.models.requests;
+package com.example.backend_java.auth.models.responses;
 
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class UserDetailRequestModel {
+public class AuthRest {
+
+    private String userId;
 
     private String firstName;
 
@@ -12,7 +14,9 @@ public class UserDetailRequestModel {
 
     private String email;
 
-    private String password;
+    private String token;
+
+
 
     public String getFirstName() {
         return firstName;
@@ -38,11 +42,19 @@ public class UserDetailRequestModel {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.backend_java.security;
+package com.example.backend_java.auth.security;
 
 
 import com.example.backend_java.repositories.UserRepository;

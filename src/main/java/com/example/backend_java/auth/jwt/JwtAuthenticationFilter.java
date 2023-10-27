@@ -1,4 +1,4 @@
-package com.example.backend_java.jwt;
+package com.example.backend_java.auth.jwt;
 
 
 import jakarta.servlet.FilterChain;

@@ -1,15 +1,7 @@
 package com.example.backend_java.dtos;
 
-import java.io.Serial;
-import java.io.Serializable;
+public class UserDto {
 
-public class UserDto implements Serializable {
-
-
-    @Serial
-    private static final long serialVersionUID = 1L;
-
-    private long id;
     private String userId;
 
     private String firstName;
@@ -17,20 +9,6 @@ public class UserDto implements Serializable {
     private String lastName;
 
     private String email;
-
-    private String password;
-
-    private String Token;
-
-    private String encryptedPassword;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getUserId() {
         return userId;
@@ -62,29 +40,5 @@ public class UserDto implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEncryptedPassword() {
-        return encryptedPassword;
-    }
-
-    public void setEncryptedPassword(String encryptedPassword) {
-        this.encryptedPassword = encryptedPassword;
-    }
-
-    public String getToken() {
-        return Token;
-    }
-
-    public void setToken(String token) {
-        Token = token;
     }
 }

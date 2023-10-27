@@ -1,5 +1,6 @@
-package com.example.backend_java.security;
-import com.example.backend_java.jwt.JwtAuthenticationFilter;
+package com.example.backend_java.auth.security;
+import com.example.backend_java.auth.jwt.JwtAuthenticationFilter;
+import com.example.backend_java.exceptions.CustomExceptionHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +29,9 @@ public class SecurityConfig  {
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
+    @Autowired
+    private CustomExceptionHandler customExceptionHandler;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
@@ -49,7 +53,12 @@ public class SecurityConfig  {
                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authenticationProvider(authProvider)
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling(exceptionHandling ->
+                        exceptionHandling
+                                .accessDeniedHandler(customExceptionHandler) // Manejo de acceso denegado
+                                .authenticationEntryPoint(customExceptionHandler) // Manejo de autenticación fallida
+                );
 
         return http.build();
     }

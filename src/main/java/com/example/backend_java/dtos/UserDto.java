@@ -1,5 +1,7 @@
 package com.example.backend_java.dtos;
 
+import java.util.List;
+
 public class UserDto {
 
     private String userId;
@@ -9,6 +11,7 @@ public class UserDto {
     private String lastName;
 
     private String email;
+    private List<PostDto> posts;
 
     public String getUserId() {
         return userId;
@@ -40,5 +43,13 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<PostDto> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<PostDto> posts) {
+        this.posts = posts;
     }
 }

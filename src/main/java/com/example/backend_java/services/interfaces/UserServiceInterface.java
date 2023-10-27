@@ -1,4 +1,4 @@
-package com.example.backend_java.services;
+package com.example.backend_java.services.interfaces;
 
 import com.example.backend_java.auth.models.dtos.AuthDto;
 import com.example.backend_java.dtos.UserDto;

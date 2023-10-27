@@ -10,7 +10,9 @@ import org.springframework.validation.annotation.Validated;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 @Entity(name = "users")
@@ -34,6 +36,8 @@ public class UserEntity implements Serializable, UserDetails {
     private String email;
     @Column(nullable = false)
     private String encryptedPassword;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<PostEntity> posts = new ArrayList<>();
 
 
     @Override
@@ -117,5 +121,13 @@ public class UserEntity implements Serializable, UserDetails {
 
     public void setEncryptedPassword(String encryptedPassword) {
         this.encryptedPassword = encryptedPassword;
+    }
+
+    public List<PostEntity> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<PostEntity> posts) {
+        this.posts = posts;
     }
 }

@@ -71,12 +71,14 @@ public class JwtService {
     }
 
     private Date getExpiration(String token){
+            logger.info("expiration tokeeen, " + getClaim(token, Claims::getExpiration));
             return getClaim(token, Claims::getExpiration);
 
     }
 
     private boolean isTokenExpired(String token){
-            return getExpiration(token).before(new Date());
+        logger.info("----- validando token -----, " + token);
+        return getExpiration(token).before(new Date());
     }
 
 }

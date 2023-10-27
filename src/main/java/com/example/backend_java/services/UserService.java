@@ -1,9 +1,9 @@
 package com.example.backend_java.services;
 
-import com.example.backend_java.auth.models.dtos.AuthDto;
 import com.example.backend_java.dtos.UserDto;
 import com.example.backend_java.entities.UserEntity;
 import com.example.backend_java.repositories.UserRepository;
+import com.example.backend_java.services.interfaces.UserServiceInterface;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

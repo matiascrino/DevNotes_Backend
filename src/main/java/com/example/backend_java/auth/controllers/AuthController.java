@@ -5,6 +5,7 @@ import com.example.backend_java.auth.models.requests.UserDetailRequestModel;
 import com.example.backend_java.auth.models.requests.UserLoginRequestModel;
 import com.example.backend_java.auth.models.responses.AuthRest;
 import com.example.backend_java.auth.services.AuthServiceInterface;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -20,36 +21,28 @@ public class AuthController {
     @Autowired
     AuthServiceInterface authService;
 
+    @Autowired
+    ObjectMapper objectMapper;
+
 
     @PostMapping(value = "login")
     public AuthRest login(@RequestBody @Valid UserLoginRequestModel userDetails){
-        AuthRest userToReturn = new AuthRest();
-
-        AuthDto userDto = new AuthDto();
-
-        BeanUtils.copyProperties(userDetails, userDto);
+        AuthDto userDto = objectMapper.convertValue(userDetails, AuthDto.class);
 
         AuthDto loggedUser = authService.loginUser(userDto);
 
-        BeanUtils.copyProperties(loggedUser, userToReturn);
+        return objectMapper.convertValue(loggedUser, AuthRest.class);
 
-        return userToReturn;
 
     }
 
     @PostMapping(value = "register" )
     public AuthRest createUser(@RequestBody @Valid UserDetailRequestModel userDetails){
-        AuthRest userToReturn = new AuthRest();
-
-        AuthDto userDto = new AuthDto();
-
-        BeanUtils.copyProperties(userDetails, userDto);
+        AuthDto userDto = objectMapper.convertValue(userDetails, AuthDto.class);
 
         AuthDto createdUser=authService.createUser(userDto);
 
-        BeanUtils.copyProperties(createdUser, userToReturn);
-
-        return userToReturn;
+        return objectMapper.convertValue(createdUser, AuthRest.class);
     }
 
 

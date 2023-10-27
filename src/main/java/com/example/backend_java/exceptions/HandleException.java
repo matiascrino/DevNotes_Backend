@@ -49,9 +49,9 @@ public class HandleException {
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(RuntimeException.class)
     public Map<String, ?> handleRuntimeExceptions(RuntimeException ex) {
-        Throwable cause = ex.getCause().getCause();
-        if (cause instanceof ConstraintViolationException) {
-            return handleConstraintViolationExceptions((ConstraintViolationException) cause);
+        Throwable cause = ex.getCause();
+        if (cause != null && cause.getCause() instanceof ConstraintViolationException) {
+            return handleConstraintViolationExceptions((ConstraintViolationException) cause.getCause());
         }
         Map<String, String> errors = new HashMap<>();
         errors.put("error", ex.getMessage());

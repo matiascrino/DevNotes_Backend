@@ -6,6 +6,7 @@ import com.example.backend_java.entities.UserEntity;
 import com.example.backend_java.auth.jwt.JwtService;
 import com.example.backend_java.exceptions.BadRequestException;
 import com.example.backend_java.repositories.UserRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,12 +37,14 @@ public class AuthService implements AuthServiceInterface {
     @Autowired
     AuthenticationManager authenticationManager;
 
+    @Autowired
+    ObjectMapper objectMapper;
+
     public AuthDto loginUser(AuthDto user){
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
             UserEntity userEntity = userRepository.findByEmail(user.getEmail()).orElseThrow(() -> new UsernameNotFoundException("User not found: " + user.getEmail()));
-            AuthDto userToReturn = new AuthDto();
-            BeanUtils.copyProperties(userEntity, userToReturn);
+            AuthDto userToReturn = objectMapper.convertValue(userEntity, AuthDto.class);
             userToReturn.setToken(jwtService.createToken(userToReturn.getEmail()));
             return userToReturn;
         }catch(Error error){
@@ -57,8 +60,7 @@ public class AuthService implements AuthServiceInterface {
             throw new BadRequestException("User already exists");
         }
 
-        UserEntity userEntity = new UserEntity();
-        BeanUtils.copyProperties(user, userEntity);
+        UserEntity userEntity = objectMapper.convertValue(user, UserEntity.class);
 
         userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
@@ -66,9 +68,7 @@ public class AuthService implements AuthServiceInterface {
 
         UserEntity storedUserDetails = userRepository.save(userEntity);
 
-        AuthDto userToReturn = new AuthDto();
-
-        BeanUtils.copyProperties(storedUserDetails, userToReturn);
+        AuthDto userToReturn = objectMapper.convertValue(storedUserDetails, AuthDto.class);
 
         userToReturn.setToken(jwtService.createToken(userToReturn.getEmail()));
 

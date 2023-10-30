@@ -19,8 +19,6 @@ public class ExpousureEntity implements Serializable {
     @Column(nullable = false, length = 50)
     private String type;
 
-    @OneToMany(mappedBy = "expousure", cascade = CascadeType.ALL)
-    private List<PostEntity> posts = new ArrayList<>();
 
     public long getExpousureId() {
         return expousureId;
@@ -38,11 +36,4 @@ public class ExpousureEntity implements Serializable {
         this.type = type;
     }
 
-    public List<PostEntity> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(List<PostEntity> posts) {
-        this.posts = posts;
-    }
 }

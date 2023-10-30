@@ -1,6 +1,7 @@
 package com.example.backend_java.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -32,8 +33,9 @@ public class PostEntity implements Serializable {
     @CreatedDate
     private Date updatedAt;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
+    @JsonIgnore
     private UserEntity user;
 
     @ManyToOne()

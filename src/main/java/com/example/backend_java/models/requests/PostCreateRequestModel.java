@@ -1,4 +1,4 @@
-package com.example.backend_java.models;
+package com.example.backend_java.models.requests;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -23,7 +23,7 @@ public class PostCreateRequestModel {
 
     @Min(value = 1, message = "Exposure ID must be greater than 0")
     private long exposureId;
-    @Min(value = 1, message = "Expiration time must be greater than 0")
+    @Min(value = 0, message = "Expiration time must be greater than 0")
     private int expiresAt;
 
     public String getTitle() {

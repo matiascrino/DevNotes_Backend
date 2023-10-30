@@ -1,17 +1,12 @@
-package com.example.backend_java.dtos;
+package com.example.backend_java.models.responses;
 
-import java.io.Serial;
-import java.io.Serializable;
-import java.util.List;
-
-public class ExpousureDto implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 1L;
+public class ExpousureRest {
 
     private long expousureId;
 
     private String type;
+
+
 
     public String getType() {
         return type;

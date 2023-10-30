@@ -1,22 +1,12 @@
-package com.example.backend_java.dtos;
+package com.example.backend_java.models.responses;
 
-import com.example.backend_java.models.responses.ExpousureRest;
-import com.example.backend_java.models.responses.UserRest;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import org.springframework.data.annotation.CreatedDate;
+import com.example.backend_java.auth.models.responses.AuthRest;
+import com.example.backend_java.dtos.ExpousureDto;
+import com.example.backend_java.dtos.UserDto;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.Date;
 
-public class PostDto implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 1L;
-
-    private long id;
+public class PostRest {
 
     private String postId;
 
@@ -28,19 +18,11 @@ public class PostDto implements Serializable {
 
     private Date createdAt;
 
-    private Date updatedAt;
+    private boolean expired = false;
 
     private UserRest user;
 
     private ExpousureRest expousure;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getPostId() {
         return postId;
@@ -82,20 +64,12 @@ public class PostDto implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
+    public boolean isExpired() {
+        return expired;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public UserRest getUser() {
-        return user;
-    }
-
-    public void setUser(UserRest user) {
-        this.user = user;
+    public void setExpired(boolean expired) {
+        this.expired = expired;
     }
 
     public ExpousureRest getExpousure() {
@@ -104,5 +78,13 @@ public class PostDto implements Serializable {
 
     public void setExpousure(ExpousureRest expousure) {
         this.expousure = expousure;
+    }
+
+    public UserRest getUser() {
+        return user;
+    }
+
+    public void setUser(UserRest user) {
+        this.user = user;
     }
 }

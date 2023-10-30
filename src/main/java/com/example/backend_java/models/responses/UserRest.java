@@ -1,8 +1,8 @@
-package com.example.backend_java.dtos;
+package com.example.backend_java.models.responses;
 
 import java.util.List;
 
-public class UserDto {
+public class UserRest {
 
     private String userId;
 
@@ -11,6 +11,9 @@ public class UserDto {
     private String lastName;
 
     private String email;
+
+
+
 
     public String getUserId() {
         return userId;

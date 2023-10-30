@@ -1,5 +1,6 @@
 package com.example.backend_java.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -36,7 +37,7 @@ public class UserEntity implements Serializable, UserDetails {
     private String email;
     @Column(nullable = false)
     private String encryptedPassword;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PostEntity> posts = new ArrayList<>();
 
 

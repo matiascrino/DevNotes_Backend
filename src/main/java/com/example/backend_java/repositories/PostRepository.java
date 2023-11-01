@@ -19,8 +19,8 @@ public interface PostRepository extends PagingAndSortingRepository<PostEntity, L
 
     PostEntity save(PostEntity postEntity);
 
-    @Query(value = "SELECT * FROM posts p WHERE p.expousure_id = :expousure and p.expires_at > :now ORDER BY created_at DESC LIMIT 20", nativeQuery = true)
-    List<PostEntity> getLastPublicPosts(@Param("expousure") long expousureId, @Param("now") Date now);
+    @Query(value = "SELECT * FROM posts p WHERE p.expousure_id = :expousure ORDER BY created_at DESC LIMIT 20", nativeQuery = true)
+    List<PostEntity> getLastPublicPosts(@Param("expousure") long expousureId);
 
     Optional<PostEntity> findByPostId(String postId);
 

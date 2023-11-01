@@ -68,7 +68,7 @@ public class PostService implements PostServiceInterface {
     @Override
     public List<PostDto> getLastsPost() {
         long publicExpousureId = 2L;
-        List<PostEntity> postEntities = postRepository.getLastPublicPosts(publicExpousureId, new Date(System.currentTimeMillis()));
+        List<PostEntity> postEntities = postRepository.getLastPublicPosts(publicExpousureId);
 
         List<PostDto> postDtoList = new ArrayList<>();
 

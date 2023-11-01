@@ -14,6 +14,7 @@ import com.example.backend_java.repositories.ExpousureRepository;
 import com.example.backend_java.repositories.PostRepository;
 import com.example.backend_java.repositories.UserRepository;
 import com.example.backend_java.services.interfaces.PostServiceInterface;
+import com.example.backend_java.utils.Expousures;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,8 +68,8 @@ public class PostService implements PostServiceInterface {
 
     @Override
     public List<PostDto> getLastsPost() {
-        long publicExpousureId = 2L;
-        List<PostEntity> postEntities = postRepository.getLastPublicPosts(publicExpousureId);
+
+        List<PostEntity> postEntities = postRepository.getLastPublicPosts(Expousures.PUBLIC);
 
         List<PostDto> postDtoList = new ArrayList<>();
 

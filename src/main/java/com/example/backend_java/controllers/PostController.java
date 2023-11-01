@@ -10,6 +10,7 @@ import com.example.backend_java.models.responses.OperationStatusModel;
 import com.example.backend_java.models.responses.PostRest;
 import com.example.backend_java.services.interfaces.PostServiceInterface;
 import com.example.backend_java.services.interfaces.UserServiceInterface;
+import com.example.backend_java.utils.Expousures;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -93,7 +94,7 @@ public class PostController {
             postRest.setExpired(true);
         }
 
-        if(postRest.getExpousure().getExpousureId() == 1 || postRest.isExpired()) {
+        if(postRest.getExpousure().getExpousureId() == Expousures.PRIVATE || postRest.isExpired()) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String email = authentication.getName();
 

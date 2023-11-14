@@ -10,6 +10,6 @@ public class ApplicationProperties {
     private Environment env;
 
     public String getSecretToken() {
-        return env.getProperty("TOKEN_SECRET");
+        return env.getProperty("token_secret");
     }
 }

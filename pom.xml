@@ -104,6 +104,9 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.11.0</version>
 				<configuration>
+					<excludes>
+						<exclude>com.google.inject:guice</exclude>
+					</excludes>
 					<source>17</source>
 					<target>17</target>
 				</configuration>

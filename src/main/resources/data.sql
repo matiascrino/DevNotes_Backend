@@ -1,3 +1,3 @@
-INSERT IGNORE INTO expousures (id, type) VALUES
-    (1, "Privado"),
-    (2, "Publico");
+INSERT INTO expousures (expousure_id, type) VALUES (1, 'public');
+INSERT INTO expousures (expousure_id, type) VALUES (2, 'private');
+

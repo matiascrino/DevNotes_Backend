@@ -33,12 +33,12 @@ public class PostEntity implements Serializable {
     @CreatedDate
     private Date updatedAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
     @JsonIgnore
     private UserEntity user;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "expousureId")
     private ExpousureEntity expousure;
 

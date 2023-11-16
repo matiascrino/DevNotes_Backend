@@ -1,6 +1,4 @@
 package com.example.backend_java.auth.security;
-
-
 import com.example.backend_java.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,7 @@ public class ApplicationConfig{
 
     @Autowired
     private UserRepository userRepository;
-    
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();

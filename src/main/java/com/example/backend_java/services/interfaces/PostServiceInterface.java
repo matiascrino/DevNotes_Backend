@@ -13,7 +13,6 @@ public interface PostServiceInterface {
 
     PostDto getPost(String id);
 
-
     void deletePost(String userId, String id);
 
     PostDto updatePost(String id, String userId, PostCreationDto postCreationDto);

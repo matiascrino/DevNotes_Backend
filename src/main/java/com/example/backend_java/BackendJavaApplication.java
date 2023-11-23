@@ -4,11 +4,12 @@ import com.example.backend_java.context.SpringApplicationContext;
 import com.example.backend_java.auth.security.ApplicationProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
-@EnableJpaAuditing // Para que funcione @CreatedDate y @LastModifiedDate
+@EnableJpaAuditing
 public class BackendJavaApplication {
 
 	public static void main(String[] args) {

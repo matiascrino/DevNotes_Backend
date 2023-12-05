@@ -94,7 +94,7 @@ public class PostController {
             postRest.setExpired(true);
         }
 
-        if(postRest.getExpousure().getExpousureId() == Expousures.PRIVATE || postRest.isExpired()) {
+        if(postRest.getExpousure().getExpousureId() == Expousures.PRIVATE) {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String email = authentication.getName();
 
